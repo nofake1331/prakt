@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+</head>
+
+<body>
+       <!--Завдання 3 (1 бали)-->
+<!--Користувач вводить рік народження. Програма показує кількість років і якщо років більше або дорівнює 16, то пише - «ласкаво просимо», якщо ні - «вхід заборонено».
+.-->
+    <div id="app" >
+      <input type="number" v-model="x">
+
+        <button v-on:click="chen">Количество лет</button>
+    </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+             x: 0,
+            },
+            methods: {  
+             chen: function(){
+                   if(this.x <=2004){
+                     
+                     alert(2020-this.x +" років  ласкаво просимо")
+                   }
+                   else {  alert(2020-this.x +" років вхід заборонено")}
+
+ 
+              
+             },
+        
+            },
+    })
+
+        
+    </script>
+</body>
+
+</html>

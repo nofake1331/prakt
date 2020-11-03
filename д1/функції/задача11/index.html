@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inpitial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+       <!--Завдання 11  (3 бали)-->
+<!--Напишіть гру «Вгадай число». При завантаженні сторінки генерується випадкове число від 0 до 10. Користувачу дається три спроби вгадати число (число вводитися в inpput). 
+При кожній перевірці видається карта: більше чи менше. При вгадуванні, завершення числа спроб видається оповіщення.
+Кількість спроб виводиться на екран.
+.-->
+<div id="app">
+    <input type="number" v-model="inp">
+    <button v-on:click="ran">Ответить</button>
+    <br>
+    Ваши попытки: {{pop}}, осталось еще {{3 - pop}}
+</div>
+
+
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        random = (num) => {
+            return Math.ceil(Math.random() * num);
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: this.random(10),
+                pop: 0,
+                inp: 0,
+            },
+            methods: {
+                ran: function () {
+                    if (this.pop < 3) {
+                        if (this.inp == this.num) {
+                            alert("Верно");
+                            this.pop += 1;
+                        }
+                        else if (this.inp > this.num) {
+                            alert("Меньше");
+                            this.pop += 1;
+                        }
+                        else if (this.inp < this.num) {
+                            alert("Больще");
+                            this.pop += 1;
+                        }
+                    }
+                },
+            }
+        });
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>

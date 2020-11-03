@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+</head>
+
+<body>
+       <!--Завдання 1 (2 бали)-->
+<!--Створіть HTML сторінку і два варіанти оформлення, які розміщені в різних css файлах. На сторінці зробіть перемикач тем оформлення. 
+    При виборі оформлення - відбувається підключення відповідного класу CSS. 
+    Запишіть в localStorage обрану тему оформлення. 
+    При оновленні сторінки завантажуйте раніше обрану тему.-->
+    <div id="app" >
+        <link rel="stylesheet" :href="x" >
+        <button v-on:click="chen">Поменять оформлення</button>
+    </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+             x:"",
+            },
+            mounted() {
+                if (localStorage.x) {
+      this.x = localStorage.x;
+    }
+  },
+  watch: {
+    x(newx) {
+      localStorage.x = newx;
+    }
+  },
+
+            methods: {  
+             chen: function(){
+          
+                        if (this.x == "dark.css") {
+
+                          this.x = "white.css"
+                        }
+                        else  {
+                             this.x = "dark.css"
+                        }
+
+              
+             },
+        
+            },
+    })
+
+        
+    </script>
+</body>
+
+</html>
