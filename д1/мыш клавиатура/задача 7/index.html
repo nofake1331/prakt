@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+       <!--Завдання 7  (2 бали)-->
+<!--Створіть елементи div, p, button, a. Використовуючи target при натисканні виведіть інформацію про тип елемента на якому клікнули.-->
+    <div id="app" v-on:click="type">
+<p v-on:oneclick="type">asdasdasd</p>
+      <button v-on:oneclick="type">asdasd</button><br>
+      <a href="#" v-on:oneclick="type">asdasd</a>
+    </div>
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {  
+                type: function(event) {
+                    alert ("Вы кликнули на елемент типа  " + event.target.tagName);
+                },
+        
+            }
+        })
+
+        
+    </script>
+</body>
+
+</html>

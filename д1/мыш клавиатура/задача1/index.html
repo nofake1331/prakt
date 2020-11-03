@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+       <!--Задача1(2бала)-->
+<!--Виведіть координати миші щодо блоку в момент руху курсора миші всередині блоку. Координати виводити під блоком.-->
+    <div id="app" v-on:mousemove="cor" style="background-color:  green; width: 500px; height:500px;">
+
+        <h1>{{x}} , {{y}}</h1>
+    
+    </div>
+<div id="ap">
+       <h1>{{x}} , {{y}}</h1>
+</div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                x: 0,
+                y: 0,
+            },
+            methods: {  
+                cor: function(event) {
+                    this.x = event.pageX;
+                    this.y = event.pageY;
+                },
+        
+            }
+        })
+
+        
+    </script>
+</body>
+
+</html>

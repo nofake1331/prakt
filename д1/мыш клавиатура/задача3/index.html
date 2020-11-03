@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body >
+       <!--Завдання 3  (2 бали)-->
+    <!--Додайте в документ 300-400 блоків div квадратної форми з розмірами сторін 30px, і кольором фону. Додавання елементів виконайте за допомогою циклу. Додайте подія при наведенні миші, яке буде скруглять дані блоки за допомогою border-radius до кола.
+Для уповільнення ефекту заокруглення в CSS можна додати transition.
+-->
+
+    <div id="app"  >
+      <div v-on:mousemove="rad" v-for="n in 300" style=" width: 30px; height: 30px; background-color: aqua; transition: 2500ms; display: inline-block;" v-bind:style ="{'border-radius': x +'px' }"></div> 
+    
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                    x: 0,
+            },
+            methods: {  
+                rad: function() {
+                    this.x = 100
+                },
+                }
+
+        })
+
+        
+    </script>
+</body>
+
+</html>

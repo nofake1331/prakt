@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+       <!--Задача5(2бала)-->
+<!--Створіть блок розмірами 50x50px. Додайте подію кліка, так, що під час кожного кліка на блоці він відсувається на 100px вниз від попереднього положення.-->
+    <div id="app" v-on:click="down" style="background-color: red;  height: 50px; width: 50px;" v-bind:style="{ 'margin-top': d +'px'}">
+  
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+               d: 0,
+            },
+            methods: {   
+                down:function () {
+                  this.d = this.d+100;
+            },
+        
+            }
+        })
+
+        
+    </script>
+</body>
+
+</html>
