@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .black {
+      color: black;
+    }
+  </style>
+
+  <div id="app">
+    <input type="radio" v-model="aut" value="0" > С автором
+    <input type="radio" v-model="aut" value=""> Без автора
+    <div v-for="q in Filter">
+      <h1 :class="q.quote.length >40 ? 'red' : 'black'">{{q.quote}}</h1>
+      <h2>{{q.source}}</h2>
+
+</div>
+<button v-on:click="sort">Сортировка</button>
+<div v-for="q in sortd" v-if="q.source !==''">
+  <h1 :class="q.quote.length >40 ? 'red' : 'black'">{{q.quote}}</h1>
+  <h2>{{q.source}}</h2>
+
+</div>
+<!-- v-if -->
+   <!-- <div v-for="q in quotes" v-if="q.source !==''"> -->
+     <!-- <h1 :class="q.quote.length >40 ? 'red' : 'black'">{{q.quote}}</h1> -->
+     <!-- <h2>{{q.source}}</h2> -->
+   <!-- </div> -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    var quotesArray = [
+      {
+        "quote": "This is just a Quote1",
+        "source": "Christopher"
+      },
+      {
+        "quote": "This is just a Quote2This is just a Quote2",
+        "source": "Martin"
+      },
+      {
+        "quote": "This is just a Quote3",
+        "source": "Dennis"
+      },
+      {
+        "quote": "This is just a Quote4",
+        "source": ""
+      },
+    ]
+
+  </script>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        quotes: quotesArray,
+        aut: "",
+        sortd:[],
+      },
+      computed: {
+        Filter: function () {
+          return this.quotes.filter(element => {
+            return Boolean(this.aut) == Boolean(element.source);
+          })
+        }
+      },
+      methods: {
+        sort:function(){
+          this.sortd = this.quotes.sort((a,b)=> (a.source > b.source)? 1:-1);
+        }
+      },
+    })
+
+
+  </script>
+</body>
+
+</html>
