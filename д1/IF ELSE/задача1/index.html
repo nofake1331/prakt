@@ -15,8 +15,10 @@
 .-->
     <div id="app" >
       <input type="number" v-model="x">
-
-        <button v-on:click="chen">Узнать подезд</button>
+         <h1 v-if="x >=1 && x<=20" >1 подезд</h1>
+         <h1 v-if="x >=21 && x<=48" >2 подезд</h1>
+         <h1 v-if="x >=49 && x<=90" >3 подезд</h1>
+         <h1 v-if="x <1 || x>90">квартира введена неверно</h1>
     </div>
  
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -27,21 +29,8 @@
              x: 0,
             },
             methods: {  
-             chen: function(){
-                   if(this.x >=1 && this.x<=20){
-                     alert("1 подезд")
-                   }
-                  else if(this.x >=21 && this.x<=48){
-                     alert("2 подезд")
-                   }   
-                   else if(this.x >=49 && this.x<=90){
-                     alert("3 подезд")
-                   }   
-                   else {alert("квартира введена неверно")}
 
- 
-              
-             },
+
         
             },
     })
