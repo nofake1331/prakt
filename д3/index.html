@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    .black {
+      color: black;
+
+    }
+    .red{
+      color: red;
+    }
+
+  </style>
+
+  <div id="app">
+
+  <input type="text" v-model="serch"  >
+  <table border="1">
+    <tr>
+      <th>ПІ</th>
+      <th>Група</th>
+      <th>Рік народження</th>
+      <th>Здав</th>
+      <th>Видалити</th>
+    </tr>
+    <tr v-for="s in studs"  class="" v-bind:id="s.id" :class="s.PIB.indexOf(serch)  ? '' : 'red'"> 
+      <td>{{s.PIB}}</td>
+      <td>{{s.Group}}</td>
+      <td>{{s.Dats}}</td> 
+      <td><input type="checkbox"   v-model="s.Prakt" ></td>
+      <td><a href="#" v-on:click="dele">Видалити</a>
+    </tr>
+
+  </table>
+{{ser}}
+
+
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        studs:[
+{
+  id: 1,
+  PIB: "Щербаков Кирилл",
+  Group:"17 19",
+  Dats: 2002,
+  Prakt: true,  
+},
+{
+  id: 2,
+  PIB: "Иванов Иван",
+  Group:"17 19",
+  Dats:2002,
+  Prakt: false,  
+},
+
+        ],
+        serch:"",
+        ser: false,
+      },
+      computed: {
+   
+        
+      },
+      methods: {
+        serching: function () {
+           this.studs.every(element => {
+             console.log(element.PIB);
+             console.log(this.serch);
+             if (element.PIB  == this.serch )  {this.ser = true;return false}
+             else this.ser = ке
+             console.log(this.ser)
+           });
+              
+                },
+
+            dele: function(id){
+              this.studs.splice(id, 1); 
+              console.log(id);
+            }
+      },
+    })
+
+ 
+  </script>
+</body>
+
+</html>
