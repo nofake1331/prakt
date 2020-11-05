@@ -9,19 +9,19 @@
 
 <body>
   <style>
-    .black {
-      color: black;
 
-    }
+
+  
     .red{
-      color: red;
+       color: red;
     }
+
 
   </style>
 
   <div id="app">
 
-  <input type="text" v-model="serch"  >
+  <input type="text" v-model="serch" v-on:keyup="serching"   >
   <table border="1">
     <tr>
       <th>ПІ</th>
@@ -30,7 +30,7 @@
       <th>Здав</th>
       <th>Видалити</th>
     </tr>
-    <tr v-for="s in studs"  class="" v-bind:id="s.id" :class="s.PIB.indexOf(serch)  ? '' : 'red'"> 
+    <tr v-for="s in studs"   v-bind:id="s.id"  :class="s.PIB.indexOf(ser) ? '': 'red'"  >
       <td>{{s.PIB}}</td>
       <td>{{s.Group}}</td>
       <td>{{s.Dats}}</td> 
@@ -39,7 +39,7 @@
     </tr>
 
   </table>
-{{ser}}
+
 
 
 </div>
@@ -64,13 +64,21 @@
   id: 2,
   PIB: "Иванов Иван",
   Group:"17 19",
-  Dats:2002,
+  Dats:2001,
   Prakt: false,  
 },
+{
+  id: 3,
+  PIB: "Филип Филипов",
+  Group:"17 19",
+  Dats:2002,
+  Prakt: true,  
+},
+
 
         ],
         serch:"",
-        ser: false,
+        ser: " ",
       },
       computed: {
    
@@ -78,15 +86,14 @@
       },
       methods: {
         serching: function () {
-           this.studs.every(element => {
-             console.log(element.PIB);
-             console.log(this.serch);
-             if (element.PIB  == this.serch )  {this.ser = true;return false}
-             else this.ser = ке
-             console.log(this.ser)
-           });
+                  if (this.serch.length  >0) {
+                  this.ser = this.serch 
+                  }
+                  else this.ser = " "
+             
+           },
               
-                },
+                
 
             dele: function(id){
               this.studs.splice(id, 1); 
