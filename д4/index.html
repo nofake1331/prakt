@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+
+  <div id="app">
+
+    <input type="text" v-model="serch" v-on:keyup="serching">
+    <table border="1">
+      <tr>
+        <th>ПІ</th>
+        <th>Група</th>
+        <th>Рік народження</th>
+        <th>Здав</th>
+        <th>Видалити</th>
+      </tr>
+      <tr v-for="s in studs" v-bind:id="s.id" :class="s.PIB.indexOf(ser) ? '': 'red'">
+        <td>{{s.PIB}}</td>
+        <td>{{s.Group}}</td>
+        <td>{{s.Dats}}</td>
+        <td><input type="checkbox" v-model="s.Prakt"></td>
+        <td><a href="#" v-on:click="dele">Видалити</a>
+      </tr>
+
+    </table>
+
+
+    <span style="font-size:25px;">EnterName:</span>
+    <input v-model.lazy="nam">
+    <span style="font-size:25px;">EnterGroup : </span>
+    <select v-model.trim="grp">
+      <option>17 19</option>
+      <option>17 29</option>
+    </select>
+    <span style="font-size:25px;">EnterAge:</span>
+    <input v-model.number="dat" type="number">
+    <input type="checkbox" v-model="pr">
+    <button v-on:click="studs.push({PIB:nam,Group:grp,Dats:dat,Prakt:pr})">ok</button>
+    <div :style="styleobj" v-on:mouseover="changebgcolor" v-on:mouseout="originalcolor"></div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        studs: [
+          {
+            id: 1,
+            PIB: "Щербаков Кирилл",
+            Group: "17 19",
+            Dats: 2002,
+            Prakt: true,
+          },
+          {
+            id: 2,
+            PIB: "Иванов Иван",
+            Group: "17 19",
+            Dats: 2001,
+            Prakt: false,
+          },
+          {
+            id: 3,
+            PIB: "Филип Филипов",
+            Group: "17 19",
+            Dats: 2002,
+            Prakt: true,
+          },
+
+        ],
+        serch: "",
+        ser: " ",
+        dat: 0,
+        grp: "",
+        nam: "",
+        pr: false,
+        styleobj: {
+          width: "100px",
+          height: "100px",
+          backgroundColor: "red"
+        }
+
+      },
+      computed: {
+
+
+      },
+      methods: {
+        serching: function () {
+          if (this.serch.length > 0) {
+            this.ser = this.serch
+          }
+          else this.ser = " "
+
+        },
+        
+        add: function(){
+     
+        },
+
+        dele: function (id) {
+          this.studs.splice(id, 1);
+          console.log(id);
+        },
+
+        changebgcolor: function () {
+          this.styleobj.backgroundColor = "green";
+        },
+        originalcolor: function () {
+          this.styleobj.backgroundColor = "red";
+        }
+
+      },
+    })
+
+
+  </script>
+</body>
+
+</html>
