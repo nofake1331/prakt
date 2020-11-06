@@ -46,7 +46,7 @@
     <span style="font-size:25px;">EnterAge:</span>
     <input v-model.number="dat" type="number">
     <input type="checkbox" v-model="pr">
-    <button v-on:click="studs.push({PIB:nam,Group:grp,Dats:dat,Prakt:pr})">ok</button>
+    <button v-on:click="studs.push({id:studs.length + 1,PIB:nam,Group:grp,Dats:dat,Prakt:pr})">ok</button>
     <div :style="styleobj" v-on:mouseover="changebgcolor" v-on:mouseout="originalcolor"></div>
   </div>
 
@@ -107,9 +107,7 @@
           else this.ser = " "
 
         },
-        
-
-
+ 
         dele: function (id) {
           this.studs.splice(id, 1);
           console.log(id);
